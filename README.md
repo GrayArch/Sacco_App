@@ -1,9 +1,10 @@
 
 <div align="center">
 
- SACCO Application
+<span style="color: blue; font-family: 'Stylus', sans-serif;">SACCO Application</span>
 
- </div>
+</div>
+
 
 
 ## Overview
