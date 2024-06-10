@@ -37,23 +37,23 @@ cd sacco-app
 ```css
 composer install
 ```
-Usage
-User Management
 
-    Admin Dashboard:
+## User Management
+
+    -Admin Dashboard:
         Navigate to the admin dashboard to manage users, borrowers, and loans.
         Admins can add new users, edit user details, and assign roles.
 
-    Borrower Management:
+    -Borrower Management:
         Add new borrowers through the borrower management interface.
         Edit borrower details as necessary.
 
-    Loan Management:
+    --Loan Management:
         Apply for new loans.
         Calculate loan repayment details using the provided calculator.
         Manage loan statuses (For Approval, Approved, Released, Complete, Denied).
 
-Member Profile Management
+--Member Profile Management
 
     Members can upload profile pictures and identification documents.
     Admins can verify and manage these documents.
