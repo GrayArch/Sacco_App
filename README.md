@@ -28,4 +28,8 @@ The SACCO Application is a web-based system designed to manage Savings and Credi
 - MySQL or MariaDB
 - Composer (for PHP package management)
 
+```
+Here is a sample screenshot.
+```
+
 ![Screenshot](./sacco/assets/img/screenshot.png)
