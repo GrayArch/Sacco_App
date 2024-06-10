@@ -1,5 +1,5 @@
 ```css
-# SACCO Application
+ SACCO Application
 ```
 
 ## Overview
