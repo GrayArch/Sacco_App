@@ -84,11 +84,6 @@ if($action == "delete_member"){
 	if($save)
 		echo $save;
 }
-if($action == "edit_member"){
-	$save = $crud->edit_member();
-	if($save)
-		echo $save;
-}
 if($action == "save_loan"){
 	$save = $crud->save_loan();
 	if($save)

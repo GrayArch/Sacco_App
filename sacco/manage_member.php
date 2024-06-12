@@ -1,84 +1,82 @@
+<?php include 'db_connect.php' ?>
 <?php 
-include('db_connect.php');
+
 if(isset($_GET['id'])){
-    $qry = $conn->query("SELECT * FROM members where id = ".$_GET['id']);
-    foreach($qry->fetch_array() as $k => $v){
-        $$k = $v;
-    }
+	$qry = $conn->query("SELECT * FROM members where id=".$_GET['id']);
+	foreach($qry->fetch_array() as $k => $val){
+		$$k = $val;
+	}
 }
+
 ?>
 <div class="container-fluid">
-    <div class="col-lg-12">
-        <form action="" id="manage-member" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" class="form-control" value="<?php echo isset($name) ? $name : '' ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-control" value="<?php echo isset($username) ? $username : '' ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" class="form-control" value="<?php echo isset($password) ? $password : '' ?>" required>
-            </div>
-            <div class="form-group">
-                <label for="type">User Type</label>
-                <select name="type" id="type" class="custom-select">
-                    <option value="1" <?php echo isset($type) && $type == 1 ? 'selected' : '' ?>>Admin</option>
-                    <option value="2" <?php echo isset($type) && $type == 2 ? 'selected' : '' ?>>Staff</option>
-                    <option value="3" <?php echo isset($type) && $type == 3 ? 'selected' : '' ?>>Member</option> <!-- New Option for Member -->
-                </select>
-            </div>
-            <!-- Profile Picture -->
-            <div class="form-group">
-                <label for="profile_picture">Profile Picture</label>
-                <input type="file" name="profile_picture" id="profile_picture" class="form-control-file">
-            </div>
-            <!-- Identification Number -->
-            <div class="form-group">
-    <label for="identification_number">Identification Number</label>
-    <input type="text" name="identification_number" id="identification_number" class="form-control" value="<?php echo isset($identification_number) ? $identification_number : '' ?>" pattern="\d{8}" title="Please enter 8 digits">
-    <small class="text-muted">Please enter exactly 8 digits.</small>
-</div>
-
-            <!-- Identification Card Front Side -->
-            <div class="form-group">
-                <label for="id_card_front">ID Card Front</label>
-                <input type="file" name="id_card_front" id="id_card_front" class="form-control-file">
-            </div>
-            <!-- Identification Card Back Side -->
-            <div class="form-group">
-                <label for="id_card_back">ID Card Back</label>
-                <input type="file" name="id_card_back" id="id_card_back" class="form-control-file">
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">Save</button>
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            </div>
-        </form>
-    </div>
+	<div class="col-lg-12">
+		<form id="manage-member">
+			<input type="hidden" name="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '' ?>">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="" class="control-label">Last Name</label>
+						<input name="lastname" class="form-control" required="" value="<?php echo isset($lastname) ? $lastname : '' ?>">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="">First Name</label>
+						<input name="firstname" class="form-control" required="" value="<?php echo isset($firstname) ? $firstname : '' ?>">
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="form-group">
+						<label for="">Middle Name</label>
+						<input name="middlename" class="form-control" value="<?php echo isset($middlename) ? $middlename : '' ?>">
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6">
+							<label for="">Address</label>
+							<textarea name="address" id="" cols="30" rows="2" class="form-control" required=""><?php echo isset($address) ? $address : '' ?></textarea>
+				</div>
+				<div class="col-md-5">
+					<div class="">
+						<label for="">Contact #</label>
+						<input type="text" class="form-control" name="contact_no" value="<?php echo isset($contact_no) ? $contact_no : '' ?>">
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-md-6">
+							<label for="">Email</label>
+							<input type="email" class="form-control" name="email" value="<?php echo isset($email) ? $email : '' ?>">
+				</div>
+				<div class="col-md-5">
+					<div class="">
+						<label for="">KRA PIN</label>
+						<input type="text" class="form-control" name="tax_id" value="<?php echo isset($tax_id) ? $tax_id : '' ?>">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
 
 <script>
-    $('#manage-member').submit(function(e){
-        e.preventDefault();
-        start_load();
-        $.ajax({
-            url:'ajax.php?action=save_member',
-            method:'POST',
-            data: new FormData(this),
-            contentType: false,
-            processData: false,
-            success:function(resp){
-                if(resp == 1){
-                    alert_toast("Member data successfully saved.","success");
-                    setTimeout(function(){
-                        location.reload();
-                    },1500);
-                }
-            }
-        });
-    });
+	 $('#manage-member').submit(function(e){
+	 	e.preventDefault()
+	 	start_load()
+	 	$.ajax({
+	 		url:'ajax.php?action=save_member',
+	 		method:'POST',
+	 		data:$(this).serialize(),
+	 		success:function(resp){
+	 			if(resp == 1){
+	 				alert_toast("Member data successfully saved.","success");
+	 				setTimeout(function(e){
+	 					location.reload()
+	 				},1500)
+	 			}
+	 		}
+	 	})
+	 })
 </script>

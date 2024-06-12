@@ -191,6 +191,30 @@ Class Action {
 		if($delete)
 			return 1;
 	}
+	function save_member(){
+		extract($_POST);
+		$data = " lastname = '$lastname' ";
+		$data .= ", firstname = '$firstname' ";
+		$data .= ", middlename = '$middlename' ";
+		$data .= ", address = '$address' ";
+		$data .= ", contact_no = '$contact_no' ";
+		$data .= ", email = '$email' ";
+		$data .= ", tax_id = '$tax_id' ";
+		
+		if(empty($id)){
+			$save = $this->db->query("INSERT INTO members set ".$data);
+		}else{
+			$save = $this->db->query("UPDATE members set ".$data." where id=".$id);
+		}
+		if($save)
+			return 1;
+	}
+	function delete_member(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM members where id = ".$id);
+		if($delete)
+			return 1;
+	}
 	function save_loan(){
 		extract($_POST);
 			$data = " borrower_id = $borrower_id ";
