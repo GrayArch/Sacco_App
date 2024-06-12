@@ -38,9 +38,11 @@ if(isset($_GET['id'])){
             </div>
             <!-- Identification Number -->
             <div class="form-group">
-                <label for="identification_number">Identification Number</label>
-                <input type="text" name="identification_number" id="identification_number" class="form-control" value="<?php echo isset($identification_number) ? $identification_number : '' ?>">
-            </div>
+    <label for="identification_number">Identification Number</label>
+    <input type="text" name="identification_number" id="identification_number" class="form-control" value="<?php echo isset($identification_number) ? $identification_number : '' ?>" pattern="\d{8}" title="Please enter 8 digits">
+    <small class="text-muted">Please enter exactly 8 digits.</small>
+</div>
+
             <!-- Identification Card Front Side -->
             <div class="form-group">
                 <label for="id_card_front">ID Card Front</label>

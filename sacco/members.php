@@ -5,12 +5,12 @@
 		<div class="card">
 			<div class="card-header">
 				<large class="card-title">
-					<b>Borrower List</b>
+					<b>Members List</b>
 				</large>
-				<button class="btn btn-primary col-md-2 float-right" type="button" id="new_borrower"><i class="fa fa-plus"></i> New Borrower</button>
+				<button class="btn btn-primary col-md-2 float-right" type="button" id="new_member"><i class="fa fa-plus"></i> New Member</button>
 			</div>
 			<div class="card-body">
-				<table class="table table-bordered" id="borrower-list">
+				<table class="table table-bordered" id=member-list">
 					<colgroup>
 						<col width="10%">
 						<col width="35%">
@@ -21,16 +21,16 @@
 					<thead>
 						<tr>
 							<th class="text-center">#</th>
-							<th class="text-center">Borrower</th>
-							<th class="text-center">Current Loan</th>
-							<th class="text-center">Next Payment Schedule</th>
+							<th class="text-center">Member</th>
+							<th class="text-center">Loan</th>
+							<th class="text-center">Status</th>
 							<th class="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$i = 1;
-							$qry = $conn->query("SELECT * FROM borrowers order by id desc");
+							$qry = $conn->query("SELECT * FROM members order by id desc");
 							while($row = $qry->fetch_assoc()):
 
 						 ?>
@@ -39,17 +39,17 @@
 						 	<td class="text-center"><?php echo $i++ ?></td>
 						 	<td>
 						 		<p>Name :<b><?php echo ucwords($row['lastname'].", ".$row['firstname'].' '.$row['middlename']) ?></b></p>
-						 		<p>Address :<b><?php echo $row['address'] ?></b></p>
-						 		<p>Contact # :<b><?php echo $row['contact_no'] ?></b></p>
+						 		<p>ID no. :<b><?php echo $row['identification_number'] ?></b></p>
+						 		<p>Contact # :<b><?php echo $row['contact_number'] ?></b></p>
 						 		<p>Email :<b><?php echo $row['email'] ?></b></p>
-						 		<p>ID NO :<b><?php echo $row['tax_id'] ?></b></p>
+						 		
 						 		
 						 	</td>
 						 	<td class="">None</td>
 						 	<td class="">N/A</td>
 						 	<td class="text-center">
-						 			<button class="btn btn-primary edit_borrower" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-edit"></i></button>
-						 			<button class="btn btn-danger delete_borrower" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-trash"></i></button>
+						 			<button class="btn btn-primary edit_member" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-edit"></i></button>
+						 			<button class="btn btn-danger delete_member" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-trash"></i></button>
 						 	</td>
 
 						 </tr>
@@ -74,25 +74,25 @@
 	}
 </style>	
 <script>
-	$('#borrower-list').dataTable()
-	$('#new_borrower').click(function(){
-		uni_modal("New borrower","manage_borrower.php",'mid-large')
+	$('#member-list').dataTable()
+	$('#new_member').click(function(){
+		uni_modal("New member","manage_member.php",'mid-large')
 	})
-	$('.edit_borrower').click(function(){
-		uni_modal("Edit borrower","manage_borrower.php?id="+$(this).attr('data-id'),'mid-large')
+	$('.edit_member').click(function(){
+		uni_modal("Edit member","manage_member.php?id="+$(this).attr('data-id'),'mid-large')
 	})
-	$('.delete_borrower').click(function(){
-		_conf("Are you sure to delete this borrower?","delete_borrower",[$(this).attr('data-id')])
+	$('.delete_member').click(function(){
+		_conf("Are you sure to delete this member?","delete_member",[$(this).attr('data-id')])
 	})
-function delete_borrower($id){
+function delete_member($id){
 		start_load()
 		$.ajax({
-			url:'ajax.php?action=delete_borrower',
+			url:'ajax.php?action=delete_member',
 			method:'POST',
 			data:{id:$id},
 			success:function(resp){
 				if(resp==1){
-					alert_toast("borrower successfully deleted",'success')
+					alert_toast("member successfully deleted",'success')
 					setTimeout(function(){
 						location.reload()
 					},1500)

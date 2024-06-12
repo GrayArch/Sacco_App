@@ -76,19 +76,10 @@
   </div>
 </body>
 <script>
-  /*
-  window.start_load = function(){
-    $('body').prepend('<di id="preloader2"></di>')
-  }
-  window.end_load = function(){
-    $('#preloader2').fadeOut('fast', function() {
-        $(this).remove();
-    })
-  }
-  */
+  
 
   window.uni_modal = function($title = '' , $url='',$size=""){
-    // start_load() // Commented out
+    // start_load() 
     $.ajax({
         url:$url,
         error:err=>{
@@ -105,7 +96,6 @@
                     $('#uni_modal .modal-dialog').removeAttr("class").addClass("modal-dialog modal-md")
                 }
                 $('#uni_modal').modal('show')
-                // end_load() // Commented out
             }
         }
     })
@@ -136,10 +126,7 @@
   }
 
   $(document).ready(function(){
-    // Removed preloader handling
-    // $('#preloader').fadeOut('fast', function() {
-    //     $(this).remove();
-    // })
+  
   })
 
   $('.datetimepicker').datetimepicker({
@@ -152,5 +139,4 @@
     width: "100%"
   })
 </script>
-
 </html>

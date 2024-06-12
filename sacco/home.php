@@ -75,8 +75,8 @@
                                         <div class="text-white-75 ">Members</div>
                                         <div class="text-lg font-weight-bold">
                                         	<?php 
-                                        	$borrowers = $conn->query("SELECT * FROM borrowers");
-                                        	echo $borrowers->num_rows > 0 ? $borrowers->num_rows : "0";
+                                        	$members = $conn->query("SELECT * FROM members");
+                                        	echo $members->num_rows > 0 ? $members->num_rows : "0";
                                         	 ?>
                                         		
                                     	</div>

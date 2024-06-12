@@ -74,6 +74,21 @@ if($action == "delete_borrower"){
 	if($save)
 		echo $save;
 }
+if($action == "save_member"){
+	$save = $crud->save_member();
+	if($save)
+		echo $save;
+}
+if($action == "delete_member"){
+	$save = $crud->delete_member();
+	if($save)
+		echo $save;
+}
+if($action == "edit_member"){
+	$save = $crud->edit_member();
+	if($save)
+		echo $save;
+}
 if($action == "save_loan"){
 	$save = $crud->save_loan();
 	if($save)

@@ -59,9 +59,7 @@
 
 						 ?>
 						 <tr>
-						 	<!--  Author Name: Mayuri K. 
- for any PHP, Codeignitor, Laravel OR Python work contact me at mayuri.infospace@gmail.com  
- Visit website : www.mayurik.com -->  
+						 	 
 						 	<td class="text-center"><?php echo $i++ ?></td>
 						 	<td>
 						 		<p>Name :<b><?php echo $row['name'] ?></b></p>
@@ -111,9 +109,7 @@
 						 	</td>
 
 						 </tr>
-<!--  Author Name: Mayuri K. 
- for any PHP, Codeignitor, Laravel OR Python work contact me at mayuri.infospace@gmail.com  
- Visit website : www.mayurik.com -->  
+ 
 						<?php endwhile; ?>
 					</tbody>
 				</table>
