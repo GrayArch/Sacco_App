@@ -79,7 +79,6 @@
   
 
   window.uni_modal = function($title = '' , $url='',$size=""){
-    // start_load() 
     $.ajax({
         url:$url,
         error:err=>{
