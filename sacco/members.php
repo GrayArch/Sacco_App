@@ -5,12 +5,12 @@
 		<div class="card">
 			<div class="card-header">
 				<large class="card-title">
-					<b>Members List</b>
+					<b>member List</b>
 				</large>
-				<button class="btn btn-primary col-md-2 float-right" type="button" id="new_member"><i class="fa fa-plus"></i> New Member</button>
+				<button class="btn btn-primary col-md-2 float-right" type="button" id="new_member"><i class="fa fa-plus"></i> New member</button>
 			</div>
 			<div class="card-body">
-				<table class="table table-bordered" id=member-list">
+				<table class="table table-bordered" id="member-list">
 					<colgroup>
 						<col width="10%">
 						<col width="35%">
@@ -21,8 +21,8 @@
 					<thead>
 						<tr>
 							<th class="text-center">#</th>
-							<th class="text-center">Member</th>
-							<th class="text-center">Loan</th>
+							<th class="text-center">member</th>
+							<th class="text-center">Current Loan</th>
 							<th class="text-center">Status</th>
 							<th class="text-center">Action</th>
 						</tr>
@@ -39,14 +39,14 @@
 						 	<td class="text-center"><?php echo $i++ ?></td>
 						 	<td>
 						 		<p>Name :<b><?php echo ucwords($row['lastname'].", ".$row['firstname'].' '.$row['middlename']) ?></b></p>
-						 		<p>ID no. :<b><?php echo $row['identification_number'] ?></b></p>
-						 		<p>Contact # :<b><?php echo $row['contact_number'] ?></b></p>
+						 		<p>Address :<b><?php echo $row['address'] ?></b></p>
+						 		<p>Contact # :<b><?php echo $row['contact_no'] ?></b></p>
 						 		<p>Email :<b><?php echo $row['email'] ?></b></p>
-						 		
+						 		<p>ID NO :<b><?php echo $row['tax_id'] ?></b></p>
 						 		
 						 	</td>
 						 	<td class="">None</td>
-						 	<td class="">N/A</td>
+						 	<td class="">Active</td>
 						 	<td class="text-center">
 						 			<button class="btn btn-primary edit_member" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-edit"></i></button>
 						 			<button class="btn btn-danger delete_member" type="button" data-id="<?php echo $row['id'] ?>"><i class="fa fa-trash"></i></button>
