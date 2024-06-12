@@ -40,7 +40,7 @@ cd sacco-app
 ```
 ## Install Dependancies
 ```css
-composer install
+Hello Folks RTFM
 ```
 
 ## User Management
